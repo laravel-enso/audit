@@ -1,12 +1,12 @@
 <?php
 
-namespace LaravelEnso\Audits\Services;
+namespace LaravelEnso\Audit\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
-use LaravelEnso\Audits\Contracts\Auditable;
-use LaravelEnso\Audits\Contracts\RestrictedAuditable;
+use LaravelEnso\Audit\Contracts\Auditable;
+use LaravelEnso\Audit\Contracts\RestrictedAuditable;
 use LaravelEnso\Helpers\Services\JsonReader;
 use ReflectionClass;
 use Symfony\Component\Finder\SplFileInfo;

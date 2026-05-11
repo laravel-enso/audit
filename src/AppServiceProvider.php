@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Audits;
+namespace LaravelEnso\Audit;
 
 use Illuminate\Support\ServiceProvider;
 

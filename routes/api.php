@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use LaravelEnso\Audits\Http\Controllers\Audit\ExportExcel;
-use LaravelEnso\Audits\Http\Controllers\Audit\InitTable;
-use LaravelEnso\Audits\Http\Controllers\Audit\TableData;
+use LaravelEnso\Audit\Http\Controllers\Audit\ExportExcel;
+use LaravelEnso\Audit\Http\Controllers\Audit\InitTable;
+use LaravelEnso\Audit\Http\Controllers\Audit\TableData;
 
 Route::middleware(['api', 'auth', 'core'])
     ->prefix('api/system/audit')

@@ -1,24 +1,24 @@
-# Audits
+# Audit
 
-[![License](https://img.shields.io/badge/license-MIT-10b981.svg)](https://github.com/laravel-enso/audits/blob/main/LICENSE)
-[![Stable](https://img.shields.io/badge/stable-2.0.0-2563eb.svg)](https://packagist.org/packages/laravel-enso/audits)
-[![Downloads](https://img.shields.io/packagist/dm/laravel-enso/audits.svg)](https://packagist.org/packages/laravel-enso/audits)
-[![PHP](https://img.shields.io/badge/php-8.2%2B-777bb4.svg)](https://github.com/laravel-enso/audits/blob/main/composer.json)
-[![Issues](https://img.shields.io/github/issues/laravel-enso/audits.svg)](https://github.com/laravel-enso/audits/issues)
-[![Merge Requests](https://img.shields.io/github/issues-pr/laravel-enso/audits.svg)](https://github.com/laravel-enso/audits/pulls)
+[![License](https://img.shields.io/badge/license-MIT-10b981.svg)](https://github.com/laravel-enso/audit/blob/main/LICENSE)
+[![Stable](https://img.shields.io/badge/stable-2.0.0-2563eb.svg)](https://packagist.org/packages/laravel-enso/audit)
+[![Downloads](https://img.shields.io/packagist/dm/laravel-enso/audit.svg)](https://packagist.org/packages/laravel-enso/audit)
+[![PHP](https://img.shields.io/badge/php-8.2%2B-777bb4.svg)](https://github.com/laravel-enso/audit/blob/main/composer.json)
+[![Issues](https://img.shields.io/github/issues/laravel-enso/audit.svg)](https://github.com/laravel-enso/audit/issues)
+[![Merge Requests](https://img.shields.io/github/issues-pr/laravel-enso/audit.svg)](https://github.com/laravel-enso/audit/pulls)
 
 ## Description
 
-Audits records Eloquent model create, update, and delete events and exposes them through an Enso table endpoint.
+Audit records Eloquent model create, update, and delete events and exposes them through an Enso table endpoint.
 
-The package does not auto-discover auditable models. Each application or package must explicitly attach `LaravelEnso\Audits\Observers\ModelObserver` to the models it wants audited.
+The package does not auto-discover auditable models. Each application or package must explicitly attach `LaravelEnso\Audit\Observers\ModelObserver` to the models it wants audited.
 
 ## Installation
 
 Install the package:
 
 ```bash
-composer require laravel-enso/audits
+composer require laravel-enso/audit
 ```
 
 Run the package migrations:
@@ -43,7 +43,7 @@ namespace App\Providers;
 
 use App\Models\Invoice;
 use Illuminate\Support\ServiceProvider;
-use LaravelEnso\Audits\Observers\ModelObserver;
+use LaravelEnso\Audit\Observers\ModelObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -89,7 +89,7 @@ This is a breaking release.
 
 Auditable model discovery was removed. Models are no longer detected through `Auditable` or `RestrictedAuditable` contracts, and the package no longer registers observers automatically.
 
-Attach `LaravelEnso\Audits\Observers\ModelObserver` manually on each model that should be audited. To restrict the recorded payload, define an `auditableAttributes()` method or a public `$auditableAttributes` property on that model.
+Attach `LaravelEnso\Audit\Observers\ModelObserver` manually on each model that should be audited. To restrict the recorded payload, define an `auditableAttributes()` method or a public `$auditableAttributes` property on that model.
 
 ## API
 
@@ -104,8 +104,8 @@ Mounted under `api/system/audit`:
 
 ### Core classes
 
-- `LaravelEnso\Audits\Observers\ModelObserver`
-- `LaravelEnso\Audits\Models\Audit`
+- `LaravelEnso\Audit\Observers\ModelObserver`
+- `LaravelEnso\Audit\Models\Audit`
 
 ## Depends On
 
@@ -120,7 +120,7 @@ Required Enso packages:
 
 Companion frontend package:
 
-- [`@enso-ui/audits`](https://docs.laravel-enso.com/frontend/audits.html) [↗](https://github.com/enso-ui/audits)
+- [`@enso-ui/audit`](https://docs.laravel-enso.com/frontend/audit.html) [↗](https://github.com/enso-ui/audit)
 
 ## Contributions
 
@@ -130,4 +130,4 @@ Thank you to all the people who already contributed to Enso!
 
 ## License
 
-[MIT](https://github.com/laravel-enso/audits/blob/main/LICENSE)
+[MIT](https://github.com/laravel-enso/audit/blob/main/LICENSE)

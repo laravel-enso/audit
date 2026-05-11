@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelEnso\Audits\Http\Controllers\Audit;
+namespace LaravelEnso\Audit\Http\Controllers\Audit;
 
 use Illuminate\Routing\Controller;
-use LaravelEnso\Audits\Tables\Builders\Audit;
+use LaravelEnso\Audit\Tables\Builders\Audit;
 use LaravelEnso\Tables\Traits\Excel;
 
 class ExportExcel extends Controller

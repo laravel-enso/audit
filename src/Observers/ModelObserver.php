@@ -1,11 +1,11 @@
 <?php
 
-namespace LaravelEnso\Audits\Observers;
+namespace LaravelEnso\Audit\Observers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
-use LaravelEnso\Audits\Enums\Event;
-use LaravelEnso\Audits\Models\Audit;
+use LaravelEnso\Audit\Enums\Event;
+use LaravelEnso\Audit\Models\Audit;
 
 class ModelObserver
 {

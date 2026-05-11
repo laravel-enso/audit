@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelEnso\Audits\Enums;
+namespace LaravelEnso\Audit\Enums;
 
 use LaravelEnso\Enums\Contracts\Frontend;
 use LaravelEnso\Enums\Contracts\Mappable;

@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelEnso\Audits\Models;
+namespace LaravelEnso\Audit\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LaravelEnso\Audits\Enums\Event;
+use LaravelEnso\Audit\Enums\Event;
 use LaravelEnso\Tables\Traits\TableCache;
 use LaravelEnso\TrackWho\Traits\CreatedBy;
 

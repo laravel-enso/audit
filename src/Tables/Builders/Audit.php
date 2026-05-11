@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelEnso\Audits\Tables\Builders;
+namespace LaravelEnso\Audit\Tables\Builders;
 
 use Illuminate\Database\Eloquent\Builder;
-use LaravelEnso\Audits\Models\Audit as Model;
+use LaravelEnso\Audit\Models\Audit as Model;
 use LaravelEnso\Tables\Contracts\Table;
 
 class Audit implements Table

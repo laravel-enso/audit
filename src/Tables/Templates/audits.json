@@ -10,7 +10,7 @@
             "label": "Event",
             "name": "event",
             "data": "audits.event",
-            "enum": "LaravelEnso\\Audits\\Enums\\Event",
+            "enum": "LaravelEnso\\Audit\\Enums\\Event",
             "meta": [
                 "sortable",
                 "slot"
