@@ -47,6 +47,15 @@
             ]
         },
         {
+            "label": "Created at",
+            "name": "created_at",
+            "data": "audits.created_at",
+            "meta": [
+                "date",
+                "sortable"
+            ]
+        },
+        {
             "label": "Audit",
             "name": "changes",
             "data": "audits.changes",

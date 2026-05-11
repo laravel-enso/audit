@@ -1,7 +1,7 @@
 # Audit
 
 [![License](https://img.shields.io/badge/license-MIT-10b981.svg)](https://github.com/laravel-enso/audit/blob/main/LICENSE)
-[![Stable](https://img.shields.io/badge/stable-2.0.2-2563eb.svg)](https://packagist.org/packages/laravel-enso/audit)
+[![Stable](https://img.shields.io/badge/stable-2.0.3-2563eb.svg)](https://packagist.org/packages/laravel-enso/audit)
 [![Downloads](https://img.shields.io/packagist/dm/laravel-enso/audit.svg)](https://packagist.org/packages/laravel-enso/audit)
 [![PHP](https://img.shields.io/badge/php-8.2%2B-777bb4.svg)](https://github.com/laravel-enso/audit/blob/main/composer.json)
 [![Issues](https://img.shields.io/github/issues/laravel-enso/audit.svg)](https://github.com/laravel-enso/audit/issues)
@@ -33,6 +33,7 @@ php artisan migrate
 - Uses explicit observer registration per model.
 - Supports restricted payloads through an `auditableAttributes()` method on the audited model.
 - Collects observed model classes and exposes them as select options for the frontend model filter.
+- Exposes the audit creation timestamp as a sortable date column for table and date interval filtering.
 - Stores the actor through `track-who` on the audit record itself.
 - Publishes table-init, table-data, export, and model-options endpoints under `api/system/audit`.
 
@@ -72,6 +73,10 @@ class Invoice extends Model
 ```
 
 ## Upgrade Guide
+
+### 2.0.3
+
+The audit table now includes the `created_at` date column, enabling the frontend date interval filter on audit rows.
 
 ### 2.0.2
 
