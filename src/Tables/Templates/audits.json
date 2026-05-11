@@ -37,14 +37,6 @@
             ]
         },
         {
-            "label": "Changes",
-            "name": "changes",
-            "data": "audits.changes",
-            "meta": [
-                "slot"
-            ]
-        },
-        {
             "label": "By",
             "name": "createdBy",
             "data": "createdBy",
@@ -52,6 +44,14 @@
             "meta": [
                 "slot",
                 "notExportable"
+            ]
+        },
+        {
+            "label": "Audit",
+            "name": "changes",
+            "data": "audits.changes",
+            "meta": [
+                "slot"
             ]
         }
     ]

@@ -1,7 +1,7 @@
 # Audit
 
 [![License](https://img.shields.io/badge/license-MIT-10b981.svg)](https://github.com/laravel-enso/audit/blob/main/LICENSE)
-[![Stable](https://img.shields.io/badge/stable-2.0.0-2563eb.svg)](https://packagist.org/packages/laravel-enso/audit)
+[![Stable](https://img.shields.io/badge/stable-2.0.2-2563eb.svg)](https://packagist.org/packages/laravel-enso/audit)
 [![Downloads](https://img.shields.io/packagist/dm/laravel-enso/audit.svg)](https://packagist.org/packages/laravel-enso/audit)
 [![PHP](https://img.shields.io/badge/php-8.2%2B-777bb4.svg)](https://github.com/laravel-enso/audit/blob/main/composer.json)
 [![Issues](https://img.shields.io/github/issues/laravel-enso/audit.svg)](https://github.com/laravel-enso/audit/issues)
@@ -11,7 +11,7 @@
 
 Audit records Eloquent model create, update, and delete events and exposes them through an Enso table endpoint.
 
-The package does not auto-discover auditable models. Each application or package must explicitly attach `LaravelEnso\Audit\Observers\ModelObserver` to the models it wants audited.
+The package does not auto-discover auditable models. Each application or package must explicitly attach `LaravelEnso\Audit\Observers\Audit` to the models it wants audited.
 
 ## Installation
 
@@ -31,8 +31,10 @@ php artisan migrate
 
 - Stores `created`, `updated`, and `deleted` events together with before/after payloads.
 - Uses explicit observer registration per model.
-- Supports restricted payloads through an `auditableAttributes()` method or `$auditableAttributes` model property.
-- Publishes table-init, table-data, export, and options endpoints under `api/system/audit`.
+- Supports restricted payloads through an `auditableAttributes()` method on the audited model.
+- Collects observed model classes and exposes them as select options for the frontend model filter.
+- Stores the actor through `track-who` on the audit record itself.
+- Publishes table-init, table-data, export, and model-options endpoints under `api/system/audit`.
 
 ## Usage
 
@@ -42,32 +44,20 @@ Register the observer from the consuming application or package service provider
 namespace App\Providers;
 
 use App\Models\Invoice;
-use Illuminate\Support\ServiceProvider;
-use LaravelEnso\Audit\Observers\ModelObserver;
+use LaravelEnso\Audit\AuditServiceProvider as ServiceProvider;
+use LaravelEnso\Audit\Observers\Audit;
 
-class AppServiceProvider extends ServiceProvider
+class AuditServiceProvider extends ServiceProvider
 {
-    public function boot(): void
-    {
-        Invoice::observe(ModelObserver::class);
-    }
+    public $observers = [
+        Invoice::class => [Audit::class],
+    ];
 }
 ```
 
 By default, all model attributes are recorded.
 
-To limit the recorded payload, define either an `auditableAttributes()` method or an `$auditableAttributes` property on the model:
-
-```php
-use Illuminate\Database\Eloquent\Model;
-
-class Invoice extends Model
-{
-    public array $auditableAttributes = ['status', 'total'];
-}
-```
-
-or:
+To limit the recorded payload, define an `auditableAttributes()` method on the model:
 
 ```php
 use Illuminate\Database\Eloquent\Model;
@@ -83,13 +73,17 @@ class Invoice extends Model
 
 ## Upgrade Guide
 
+### 2.0.2
+
+Observed model classes are now collected from `AuditServiceProvider::$observers` and exposed through `system.audit.models` / `GET api/system/audit/models` for frontend model filters.
+
 ### 2.0.0
 
 This is a breaking release.
 
-Auditable model discovery was removed. Models are no longer detected through `Auditable` or `RestrictedAuditable` contracts, and the package no longer registers observers automatically.
+Auditable model discovery was removed. Models are no longer detected automatically, and the package no longer registers observers on its own.
 
-Attach `LaravelEnso\Audit\Observers\ModelObserver` manually on each model that should be audited. To restrict the recorded payload, define an `auditableAttributes()` method or a public `$auditableAttributes` property on that model.
+Attach `LaravelEnso\Audit\Observers\Audit` manually on each model that should be audited. To restrict the recorded payload, define an `auditableAttributes()` method on that model.
 
 ## API
 
@@ -100,12 +94,18 @@ Mounted under `api/system/audit`:
 - `system.audit.initTable`
 - `system.audit.tableData`
 - `system.audit.exportExcel`
-- `system.audit.options`
+- `system.audit.models`
+
+The model options route returns the audited models registered through the audit service provider:
+
+- `GET api/system/audit/models`
 
 ### Core classes
 
-- `LaravelEnso\Audit\Observers\ModelObserver`
+- `LaravelEnso\Audit\AuditServiceProvider`
+- `LaravelEnso\Audit\Observers\Audit`
 - `LaravelEnso\Audit\Models\Audit`
+- `LaravelEnso\Audit\Services\Models`
 
 ## Depends On
 

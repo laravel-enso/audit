@@ -36,7 +36,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LaravelEnso\\Audit\\AppServiceProvider"
+                "LaravelEnso\\Audit\\AppServiceProvider",
+                "LaravelEnso\\Audit\\AuditServiceProvider"
             ]
         }
     }

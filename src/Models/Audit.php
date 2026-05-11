@@ -11,6 +11,8 @@ class Audit extends Model
 {
     use TableCache, CreatedBy;
 
+    public const UPDATED_AT = null;
+
     protected $guarded = [];
 
     protected $casts = [

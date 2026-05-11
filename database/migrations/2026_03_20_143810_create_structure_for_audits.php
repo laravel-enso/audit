@@ -8,6 +8,7 @@ return new class extends Migration {
         ['name' => 'system.audit.initTable', 'description' => 'Init table for audit', 'is_default' => false],
         ['name' => 'system.audit.tableData', 'description' => 'Get table data for audit', 'is_default' => false],
         ['name' => 'system.audit.exportExcel', 'description' => 'Export excel for audit', 'is_default' => false],
+        ['name' => 'system.audit.models', 'description' => 'Get model options for audit', 'is_default' => false],
     ];
 
     protected array $menu = [
