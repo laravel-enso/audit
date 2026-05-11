@@ -3,7 +3,6 @@
 namespace LaravelEnso\Audit\Services;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 
 class Models
 {
@@ -23,7 +22,7 @@ class Models
     {
         return Collection::wrap(self::$models)
             ->map(fn (string $model) => [
-                'label' => Str::of(class_basename($model))->headline()->toString(),
+                'label' => $model,
                 'value' => $model,
             ])->values();
     }
