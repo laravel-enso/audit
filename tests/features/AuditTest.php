@@ -32,11 +32,11 @@ class AuditTest extends TestCase
 
         $this->assertSame([
             [
-                'label' => 'Company',
+                'label' => Company::class,
                 'value' => Company::class,
             ],
             [
-                'label' => 'Person',
+                'label' => Person::class,
                 'value' => Person::class,
             ],
         ], Models::options()->all());
@@ -56,7 +56,7 @@ class AuditTest extends TestCase
             ->assertOk()
             ->assertExactJson([
                 [
-                    'label' => 'Person',
+                    'label' => Person::class,
                     'value' => Person::class,
                 ],
             ]);
