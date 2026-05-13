@@ -5,7 +5,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
 use LaravelEnso\Audit\Enums\Event;
 use LaravelEnso\Audit\Models\Audit as AuditModel;
-use LaravelEnso\Audit\Observers\Audit;
 use LaravelEnso\Audit\Services\Models;
 use LaravelEnso\Companies\Models\Company;
 use LaravelEnso\People\Models\Person;
@@ -17,13 +16,6 @@ use Tests\TestCase;
 class AuditTest extends TestCase
 {
     use RefreshDatabase;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Models::$models = [];
-    }
 
     #[Test]
     public function it_registers_model_options_from_observed_models(): void
@@ -67,7 +59,7 @@ class AuditTest extends TestCase
     {
         $this->createAuditableTable();
 
-        AuditTestModel::observe(Audit::class);
+        Models::register([AuditTestModel::class]);
 
         $model = AuditTestModel::create([
             'name' => 'initial',

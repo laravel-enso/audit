@@ -3,19 +3,19 @@
 namespace LaravelEnso\Audit\Services;
 
 use Illuminate\Support\Collection;
+use LaravelEnso\Audit\Observers\Audit;
 
 class Models
 {
-    public static array $models = [];
+    private static array $models = [];
 
     public static function register(array $models): void
     {
-        self::$models = Collection::wrap(self::$models)
-            ->merge($models)
-            ->unique()
-            ->sort()
-            ->values()
-            ->all();
+        self::$models = Collection::wrap($models)
+            ->unique()->sort()->values()->all();
+
+        Collection::wrap($models)
+            ->each(fn ($model) => $model::observe(Audit::class));
     }
 
     public static function options(): Collection
