@@ -7,10 +7,10 @@ use LaravelEnso\Audit\Services\Models;
 
 class AuditServiceProvider extends EventServiceProvider
 {
-    public $observers = [];
+    public $auditable = [];
 
     public function boot(): void
     {
-        Models::register(array_keys($this->observers));
+        Models::register(array_keys($this->auditable));
     }
 }
