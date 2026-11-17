@@ -1,7 +1,7 @@
 # Audit
 
 [![License](https://img.shields.io/badge/license-MIT-10b981.svg)](https://github.com/laravel-enso/audit/blob/main/LICENSE)
-[![Stable](https://img.shields.io/badge/stable-2.0.7-2563eb.svg)](https://packagist.org/packages/laravel-enso/audit)
+[![Stable](https://img.shields.io/badge/stable-2.0.8-2563eb.svg)](https://packagist.org/packages/laravel-enso/audit)
 [![Downloads](https://img.shields.io/packagist/dm/laravel-enso/audit.svg)](https://packagist.org/packages/laravel-enso/audit)
 [![PHP](https://img.shields.io/badge/php-8.2%2B-777bb4.svg)](https://github.com/laravel-enso/audit/blob/main/composer.json)
 [![Issues](https://img.shields.io/github/issues/laravel-enso/audit.svg)](https://github.com/laravel-enso/audit/issues)
@@ -29,6 +29,7 @@ php artisan migrate
 
 ## Features
 
+- Filters table rows by the actor's current role through `params.roleId`; omitting or clearing it includes all roles.
 - Stores `created`, `updated`, and `deleted` events together with before/after payloads.
 - Uses explicit model registration through `AuditServiceProvider::$models`.
 - Supports restricted payloads through an `auditableAttributes()` method on the audited model.
